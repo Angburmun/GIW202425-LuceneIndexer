@@ -6,9 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="lib"/>
-	<classpathentry kind="src" path="docs"/>
-	<classpathentry kind="src" path="index"/>
 	<classpathentry kind="lib" path="C:/Users/angel/eclipse-workspace/LuceneIndexer/lib/lucene-analysis-common-10.2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/angel/eclipse-workspace/LuceneIndexer/lib/lucene-core-10.2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/angel/eclipse-workspace/LuceneIndexer/lib/lucene-queryparser-10.2.0.jar"/>
