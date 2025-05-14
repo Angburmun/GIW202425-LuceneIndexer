@@ -11,4 +11,5 @@ Indexador Java con Lucene.
 
 ## USO:
 `java -jar indexador.jar <carpeta-docs> <carpeta-index>` -> Indexa los archivos de la carpeta docs dentro de la carpeta index.
+
 `java -jar buscador.jar <carpeta-index>` -> Busca las coincidencias dentro de la carpeta index.
