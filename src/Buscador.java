@@ -2,6 +2,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
+import org.apache.lucene.index.StoredFields;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
@@ -25,7 +26,7 @@ public class Buscador extends JFrame {
         setSize(600, 400);
         setLayout(new BorderLayout());
 
-        // Panel superior con campo de texto y botón
+        // Búsqueda
         JPanel topPanel = new JPanel(new BorderLayout());
         queryField = new JTextField();
         JButton searchButton = new JButton("Buscar");
@@ -34,7 +35,7 @@ public class Buscador extends JFrame {
         topPanel.add(queryField, BorderLayout.CENTER);
         topPanel.add(searchButton, BorderLayout.EAST);
 
-        // Área de resultados
+        // Resultados
         resultArea = new JTextArea();
         resultArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(resultArea);
@@ -49,6 +50,7 @@ public class Buscador extends JFrame {
         try {
             DirectoryReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(indexPath)));
             IndexSearcher searcher = new IndexSearcher(reader);
+            StoredFields storedFields = searcher.storedFields();
             Analyzer analyzer = new EnglishAnalyzer();
 
             QueryParser parser = new QueryParser("contents", analyzer);
@@ -58,7 +60,7 @@ public class Buscador extends JFrame {
             resultArea.setText("");
 
             for (ScoreDoc hit : results.scoreDocs) {
-                Document doc = searcher.doc(hit.doc);
+                Document doc = storedFields.document(hit.doc);
                 String filename = doc.get("filename");
                 float score = hit.score;
                 resultArea.append(String.format("📄 %s (Score: %.2f)\n", filename, score));
