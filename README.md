@@ -3,10 +3,15 @@ Indexador Java con Lucene.
 
 ## ESTRUCTURA:
 /LuceneIndexer/
+
 ├── indexador.jar
+
 ├── buscador.jar/
+
 ├── docs/
+
 │   └── (archivos .txt)
+
 └── index/
 
 ## USO:
